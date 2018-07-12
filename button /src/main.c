@@ -1,12 +1,11 @@
-#include <avr/io.h>
-#include <util/delay.h>
+#include "main.h"
 #include <stdbool.h>
 
 int main() {
     unsigned char butcount = 0;
 
-    DDRC = 0x00; // A
-    DDRD = 0xFF; // D
+    DDRC = OUTPUT;
+    DDRD = INPUT;
     PORTC = 0b00000001; // A0
     PORTD = 0b00000000;
 
@@ -33,10 +32,6 @@ int main() {
                 PORTD = 0b00000000;
             }
         }
-
-
     }
-
-
     return 0;
-}
+};

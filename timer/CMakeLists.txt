@@ -26,7 +26,7 @@ set(CMAKE_CXX_COMPILER   ${AVRCPP})
 set(CMAKE_C_COMPILER     ${AVRC})
 set(CMAKE_ASM_COMPILER   ${AVRC})
 
-project (button C)
+project (timer C)
 
 # Important project paths
 set(BASE_PATH    "${${PROJECT_NAME}_SOURCE_DIR}")
