@@ -1,10 +1,18 @@
 #include "main.h"
 
-int main()
+int main(void)
 {
-    while (true)
-    {
+    USART_Init(8); //115200
 
+    while(true)
+    {
+        USART_Transmit('O');
+        USART_Transmit('k');
+        USART_Transmit('!');
+        USART_Transmit(0x0d);
+        USART_Transmit(0x0a);
+
+        _delay_ms(500);
     }
 
     return 0;
