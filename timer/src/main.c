@@ -11,8 +11,8 @@ void timer_ini(void)
 {
     TCCR1B |= (1 << WGM12);
     TIMSK1 |= (1 << OCIE1A);
-    OCR1AH = 0b01111010;
-    OCR1AL = 0b00010010;
+    OCR1AH = 0b00001111;
+    OCR1AL = 0b00111100;
     TCCR1B |= (1 << CS12);
 }
 
