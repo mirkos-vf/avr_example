@@ -4,8 +4,8 @@ set(PROG_TYPE usbasp)
 # extra arguments to avrdude: baud rate, chip type, -F flag, etc.
 
 # Variables regarding the AVR chip
-set(MCU atmega328p)
-set(TMCU m328p)
+set(MCU atmega8)
+set(TMCU m8)
 set(F_CPU 8000000)
 
 add_definitions(-DF_CPU=${F_CPU})
@@ -70,7 +70,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "${PROJECT_NAME}.el
 # Compiling targets
 
 add_custom_target(hex ALL       ${OBJCOPY} -R .eeprom -O ihex "${PROJECT_NAME}.elf" "${PROJECT_NAME}.hex")
-add_custom_target(flash         ${AVRDUDE} -c usbasp -p m328p -p atmega328p -U flash:w:blink.hex:i)
+add_custom_target(flash         ${AVRDUDE} -c usbasp -p ${TMCU} -p ${MCU} -U flash:w:${PROJECT_NAME}.hex:i)
 add_custom_target(reset         ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -e)
 #TODO: exctract fuse from variables -U lfuse:w:0x62:m -U hfuse:w:0xD9:m
 add_custom_target(fuses         ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -U lfuse:w:0x62:m -U hfuse:w:0xD9:m)

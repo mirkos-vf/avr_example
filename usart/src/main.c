@@ -12,7 +12,7 @@ int main(void)
         USART_Transmit(0x0d);
         USART_Transmit(0x0a);
 
-        _delay_ms(500);
+        _delay_ms(50);
     }
 
     return 0;

@@ -2,17 +2,19 @@
 
 void USART_Init( unsigned int speed)
 {
-    UBRR0H = (unsigned char) (speed >> 8); // NOLINT
-    UBRR0L = (unsigned char) speed;
+    UBRRH = (unsigned char) (speed >> 8); // NOLINT
+    UBRRL = (unsigned char) speed;
 
-    UCSR0B = (1 << RXEN0)|( 1<< TXEN0 ); // NOLINT
-    UCSR0B |= ( 1 << RXCIE0 ); // NOLINT
-    UCSR0A |= ( 1 << U2X0 ); // NOLINT
-    UCSR0C = ( 1 << 0 ) | ( 1 << USBS0 ) | ( 1 << UCSZ00 ) | ( 1 << UCSZ00 ); //NOLINT
+    UCSRB = (1 << RXEN)|( 1<< TXEN ); // NOLINT
+    // enable USART
+    UCSRB |= ( 1 << RXCIE ); // NOLINT
+    // enable interrupts
+    UCSRA |= ( 1 << U2X ); // NOLINT
+    UCSRC = ( 1 << URSEL ) | ( 1 << USBS ) | ( 1 << UCSZ1 ) | ( 1 << UCSZ0 ); //NOLINT
 }
 
 void USART_Transmit( unsigned char data )
 {
-    while ( !( UCSR0A & ( 1 << UDRE0 ) ) );
-    UDR0 = data;
+    while ( !( UCSRA & ( 1 << UDRE ) ) ); // NOLINT
+    UDR = data;
 }
