@@ -1,19 +1,24 @@
 #include "main.h"
 
+void send_ok(void);
+
 int main(void)
 {
     USART_Init(8); //115200
+    send_ok();
 
     while(true)
     {
-        USART_Transmit('O');
-        USART_Transmit('k');
-        USART_Transmit('!');
-        USART_Transmit(0x0d);
-        USART_Transmit(0x0a);
 
-        _delay_ms(50);
     }
 
     return 0;
+}
+
+void send_ok(){
+    USART_Transmit('O');
+    USART_Transmit('k');
+    USART_Transmit('!');
+    USART_Transmit(0x0d);
+    USART_Transmit(0x0a);
 }
