@@ -74,6 +74,7 @@ add_custom_target(flash         ${AVRDUDE} -c usbasp -p ${TMCU} -p ${MCU} -U fla
 add_custom_target(reset         ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -e)
 #TODO: exctract fuse from variables -U lfuse:w:0x62:m -U hfuse:w:0xD9:m
 add_custom_target(fuses         ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -U lfuse:w:0x62:m -U hfuse:w:0xD9:m)
+add_custom_target(fuses_out     ${AVRDUDE} -c ${PROG_TYPE} -p ${MCU} -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m)
 
 set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${PROJECT_NAME}.hex")
 
