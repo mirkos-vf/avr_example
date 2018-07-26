@@ -32,10 +32,11 @@ int main() {
     USART_Transmit((unsigned char) ((adc % 1000) / 100 + 0x30));
     USART_Transmit((unsigned char) ((adc % 100) / 10 + 0x30));
     USART_Transmit((unsigned char) (adc % 10 + 0x30));
+
     USART_Transmit(CR);
     USART_Transmit(LF);
 
-    _delay_ms(10000);
+    _delay_ms(2500);
   }
   return 0;
 }
